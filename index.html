@@ -4,79 +4,59 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Jia Ying's Portfolio</title>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300|Lato|Source+Code+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet">
     <link rel="stylesheet" href="assets/styles/vendors/responsive-grid-system.scss">
     <link rel="stylesheet" href="assets/styles/styles.scss">
   </head>
-  <body>
-    <div id="about">
-      <img src="" alt="">
-      <table class="intro">
-        <tr>
-          <td class="code-line-number">1.</td>
-          <td  class="code-line">
-            <span class="code-reserved-word"><i>function</i></span> <span class="code-function-name">hello</span><span class="code-parenthesis">() {</span> <br>
-          </td>
-        </tr>
-        <tr>
-          <td class="code-line-number">2.</td>
-          <td class="code-line">
-            &nbsp;&nbsp;<span class="code-reserved-word">const</span> name <span class="code-operator">=</span> <span class="code-string">'Lek Jia Ying'</span><span class="code-parenthesis">;</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="code-line-number">3.</td>
-          <td class="code-line">
-            &nbsp;&nbsp;<span class="code-reserved-word">let</span> career <span class="code-operator">=</span> <span class="code-string">'Student'</span><span class="code-parenthesis">;</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="code-line-number">4.</td>
-          <td class="code-line" >
-            &nbsp;&nbsp;<span class="code-reserved-word">let</span> school <span class="code-operator">=</span> <span class="code-string">'National University of Singapore'</span><span class="code-parenthesis">;</span>
-          </td class="code-line">
-        </tr>
-        <tr>
-          <td class="code-line-number">5.</td>
-          <td  class="code-line">
-            &nbsp;&nbsp;<span class="code-reserved-word">let</span> areaOfInterest <span class="code-operator">=</span> <span class="code-string">'Designing and developing clean and easy-to-use interfaces'</span><span class="code-parenthesis">;</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="code-line-number">6.</td>
-          <td class="code-line">
-            &nbsp;&nbsp;<span class="code-reserved-word">if</span> (likeMyPortfolio <span class="code-operator">===</span> true) <span class="code-parenthesis">{</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="code-line-number">7.</td>
-          <td class="code-line">
-            &nbsp;&nbsp;&nbsp;&nbsp;<a href="" class="code-function-name">doViewMyResume<span class="code-parenthesis">()</span></a><span class="code-parenthesis">;</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="code-line-number">8.</td>
-          <td  class="code-line">
-            &nbsp;&nbsp;<span class="code-parenthesis">}</span> <span class="code-reserved-word">else</span> <span class="code-parenthesis">{</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="code-line-number">9.</td>
-          <td  class="code-line">
-            &nbsp;&nbsp;&nbsp;&nbsp;<a href="" class="code-function-name">giveMeAFeedbackToImprove<span class="code-parenthesis">()</span></a><span class="code-parenthesis">;</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="code-line-number">10.</td>
-          <td  class="code-line">&nbsp;&nbsp;<span class="code-parenthesis">}</span></td>
-        </tr>
-        <tr>
-          <td class="code-line-number">11.</td>
-          <td  class="code-line">
-          <span class="code-parenthesis">};</span>
-          </td>
-        </tr>
-      </table>
+  <body id="landing-page">
+    <div class="group section">
+      <div class="col span_12_of_12">
+        <table class="intro">
+          <tr>
+            <td class="code-line">
+              <span class="code-reserved-word"><i>function</i></span> <span class="code-function-name">hello</span><span class="code-parenthesis">() {</span> <br>
+            </td>
+          </tr>
+          <tr>
+            <td class="code-line">
+              &nbsp;&nbsp;<span class="code-reserved-word">const</span> name <span class="code-operator">=</span> <span class="code-string">'Lek Jia Ying'</span><span class="code-parenthesis">;</span>
+            </td>
+          </tr>            
+          <tr>
+            <td  class="code-line">
+              &nbsp;&nbsp;<span class="code-reserved-word">let</span> areaOfInterest <span class="code-operator">=</span> <span class="code-string">'Designing and developing clean and easy-to-use interfaces'</span><span class="code-parenthesis">;</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="code-line">
+              &nbsp;&nbsp;<span class="code-reserved-word">if</span> (wantToKnowMoreAboutMe <span class="code-operator">===</span> true) <span class="code-parenthesis">{</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="code-line">
+              &nbsp;&nbsp;&nbsp;&nbsp;<a href="portfolio.html" class="code-function-name">viewMyPortfolio</a><span class="code-parenthesis">()</span><span class="code-parenthesis">;</span>
+            </td>
+          </tr> 
+          <tr>
+            <td  class="code-line">
+              &nbsp;&nbsp;<span class="code-parenthesis">}</span> <span class="code-reserved-word">else</span> <span class="code-parenthesis">{</span>
+            </td>
+          </tr>
+          <tr>
+            <td  class="code-line">
+              &nbsp;&nbsp;&nbsp;&nbsp;<a href="portfolio.html" class="code-function-name">viewMyPortfolioToo</a><span class="code-parenthesis">()</span><span class="code-parenthesis">;</span>
+            </td>
+          </tr>
+          <tr>
+            <td  class="code-line">&nbsp;&nbsp;<span class="code-parenthesis">}</span></td>
+          </tr>
+          <tr>
+            <td  class="code-line">
+            <span class="code-parenthesis">};</span>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
   </body>
 </html>
