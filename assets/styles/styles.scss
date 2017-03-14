@@ -1,0 +1,44 @@
+body {
+  font-family: Avenir;
+  font-size: 1em;
+  background-color: #F8FEFF;
+}
+
+#about {
+  width: 450px;
+  // background-color: #BABEBF;
+}
+table {
+  border-spacing: 0;
+  color: white;
+}
+.code-reserved-word {
+  color: #7873ff;
+}
+.code-function-name {
+  color: #cdf000;
+}
+a.code-function-name {
+  text-decoration: dotted;
+}
+.code-parenthesis {
+  color: white;
+}
+.code-operator {
+  color: #d02471;
+}
+.code-string {
+  color: #d18c32;
+}
+.code-line-number {
+  color: #3d3d3d;
+  background-color: #1e1e1e;
+  border-right: 1px solid #3d3d3d;
+}
+.code-line {
+  background-color: #302e41;
+}
+.intro {
+  font-family: Source Code Pro;
+  font-size: 14px;
+}
