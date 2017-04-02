@@ -120,6 +120,10 @@ body {
   margin-top: 0;
   font-style: italic;
 }
+.white-space {
+  height: 152px;
+  width: calc(100% - 278.44px - 436.95px);
+}
 .my-project {
   width: 240px;
   font-family: 'Josefin Sans';
@@ -163,9 +167,9 @@ body {
   color: #7F2F41;
   text-decoration: none;
 }
-.project-details {
+/*.project-details {
   float: right;
-}
+}*/
 .project-details h3 {
   display: inline-block;
   border-bottom: 2px dotted #d8d8d8;
