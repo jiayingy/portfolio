@@ -1,6 +1,11 @@
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('../fonts/Source-Sans-Pro/SourceSansPro-Regular.otf');
+}
+
 body {
   margin: 0;
-  font-family: 'Josefin Slab', 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Josefin Sans', 'Josefin Slab', 'Avenir', Helvetica, Arial, sans-serif;
   font-size: 16px;
   background-color: #eee;
   margin: 10px 50px;
@@ -15,11 +20,13 @@ body {
   font-size: 24px;
   font-weight: bold;
   color: black;
+  font-family: 'Josefin Slab';
 }
 .navbar .tagline {
   font-style: italic;
   font-size: 14px;
   color: black;
+  font-family: 'Josefin Slab';
 }
 .project-navbar,
 .navbar {
@@ -109,6 +116,7 @@ body {
 
 .projects {
   margin: 30px 0;
+  font-family: 'Josefin Slab';  
 }
 .projects h3 {
   margin-top: 10px;
@@ -151,15 +159,16 @@ body {
   border-bottom: 1px solid #d8d8d8;
 }
 .project-description h1 {
+  font-family: 'Josefin Slab';
   font-size: 24px;
   font-weight: bold;
   display: inline-block;
   border-bottom: 2px dotted #CCA2AB;
 }
 .project-description h2 {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
-  font-style: italic;
+  /*font-style: italic;*/
   margin-top: 0;
   line-height: 23px;
 }
@@ -167,17 +176,19 @@ body {
   color: #7F2F41;
   text-decoration: none;
 }
-/*.project-details {
+.project-details {
   float: right;
-}*/
+}
 .project-details h3 {
+  font-family: 'Josefin Slab';
   display: inline-block;
   border-bottom: 2px dotted #d8d8d8;
   margin-bottom: 0;
 }
 .project-details h4 {
-  font-weight:400;
+  font-weight: 400;
   line-height: 23px;
+  font-family: 'Josefin Sans';
 }
 .project-details .col {
   padding: 0 10px;
@@ -224,9 +235,9 @@ body {
   display: inline-block;
 }
 .my-role .col {
-  width: 500px;
+  width: 400px;
   max-width: 100%;
-  margin: 10px;
+  margin: 15px;
 }
 .my-role .prototype {
   width: 100%;
@@ -274,6 +285,7 @@ body {
 }
 .skills .my-skills h1 {
   font-size: 20px;
+  font-family: 'Josefin Sans';
 }
 .skills .my-skills ul {
   padding: 0;
@@ -282,7 +294,8 @@ body {
   font-family: 'Josefin Sans';  
   list-style-type: none;
   display: inline-block;
-  border: 1px solid #CCA2AB;
+  border: 1px solid #c6a7ad;
+  border-radius: 5px;
   padding: 10px;
   margin: 5px;
   font-size: 18px;
