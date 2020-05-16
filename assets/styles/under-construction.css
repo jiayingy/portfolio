@@ -1,0 +1,54 @@
+@keyframes blink {
+  0% {
+    background-position: 0px 0px;
+  }
+
+  10% {
+    background-position: -500px 0px;
+  }
+
+  16% {
+    background-position: 0px 0px;
+  }
+
+  100% {
+    background-position: 0px 0px;
+  }
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background-color: #F4EDF8;
+  color: #707070;
+  font-family: 'Gill Sans', Arial, Helvetica, sans-serif;
+  text-align: center;
+  min-height: 100%;
+}
+
+a {
+  color: #D34433;
+}
+
+.content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  min-width: 250px;
+  min-height: 263px;
+  background-image: url(/assets/images/under-construction-bg.svg);
+  background-size: cover;
+  animation: blink 4.6s steps(2) infinite;
+}
+/* .logo img {
+  width: 100%;
+} */
