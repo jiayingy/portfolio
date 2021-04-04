@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
+    "@vue/eslint-config-airbnb": "^5.3.0",
     "webpack": "^3.8.1"
   },
   "scripts": {
