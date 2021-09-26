@@ -15,6 +15,6 @@ export default {
 <style lang="scss" scoped>
 #app {
   height: 100vh;
-  width: 100vw;
+  width: 100%;
 }
 </style>
