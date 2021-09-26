@@ -9,9 +9,9 @@ import CandyController from './Home/CandyController';
 
 export default {
   components: {
-    CandyController
-  }
-}
+    CandyController,
+  },
+};
 </script>
 
 <style lang="scss" scoped>

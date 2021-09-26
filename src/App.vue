@@ -7,9 +7,9 @@ import PortfolioHome from './components/PortfolioHome';
 
 export default {
   components: {
-    PortfolioHome
-  }
-}
+    PortfolioHome,
+  },
+};
 </script>
 
 <style lang="scss" scoped>
