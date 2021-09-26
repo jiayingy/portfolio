@@ -1,60 +1,66 @@
 <template>
-  <div ref="candyController">
+  <div class="candy-controller" ref="candyController">
+      <CandyElement
+        v-for="i in maxRow"
+        :key="i"
+        :index="i"
+        :totalDistance="height"
+        :tick="{ delta, prevTimestamp }"
+      />
   </div>
 </template>
 
 <script>
-import Vue from 'vue';
-import stylesVariables from '@/assets/styles/exports.scss';
-import CandyElement from './CandyElement.vue';
+import CandyElement from './CandyElement';
 
-const MAX_ROW = 12;
-const CANDY_SIZE = parseInt(stylesVariables.candySize, 10);
+const MAX_ROW = 8;
 
 export default {
+  components: { CandyElement },
   props: {
     rows: {
       type: Number,
-      default: 0
-    }
+      default: 0,
+    },
   },
   data() {
     return {
-      maxSpeed: CANDY_SIZE * 0.8,
-      minSpeed: CANDY_SIZE * 0.1,
-      maxOffset: CANDY_SIZE * 5,
-      maxRow: MAX_ROW
-    }
+      height: window.innerHeight,
+      width: window.innerWidth,
+      prevTimestamp: 0,
+      delta: 0,
+    };
   },
-  mounted() {
-    const candyComponent = Vue.extend(CandyElement);
-
-    // setInterval(() => {
-      const candyComponentInstance = new candyComponent({
-        propsData: { 
-          speed: this.getSpeed(), 
-          offset: this.getOffset(), 
-          row: this.getRow() 
-        }
-      });
-      candyComponentInstance.$mount();
-      this.$refs.candyController.appendChild(candyComponentInstance.$el);
-    // }, 5000);
+  created() {
+    window.addEventListener('resize', this.getWindowSize);
+    this.tick(0);
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.getWindowSize);
+  },
+  computed: {
+    maxRow() {
+      return Math.min(Math.ceil(this.width / 200), MAX_ROW);
+    },
   },
   methods: {
-    getSpeed() {
-      return Math.random() * (this.maxSpeed - this.minSpeed) + this.minSpeed;
+    getWindowSize() {
+      this.height = window.innerHeight;
+      this.width = window.innerWidth;
     },
-    getOffset() {
-      return Math.random() * this.maxOffset;
+    tick(timestamp) {
+      this.delta = timestamp - this.prevTimestamp;
+      this.prevTimestamp = timestamp;
+      requestAnimationFrame(this.tick);
     },
-    getRow() {
-      return Math.random() * this.maxRow;
-    }
-  }
-}
+  },
+};
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.candy-controller {
+  display: flex;
+  overflow: hidden;
+  height: 100%;
+}
 </style>
