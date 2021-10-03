@@ -22,36 +22,26 @@ export default {
       type: Number,
       default: 0,
     },
-  },
-  data() {
-    return {
-      height: window.innerHeight,
-      width: window.innerWidth,
-      prevTimestamp: 0,
-      delta: 0,
-    };
-  },
-  created() {
-    window.addEventListener('resize', this.getWindowSize);
-    this.tick(0);
-  },
-  beforeDestroy() {
-    window.removeEventListener('resize', this.getWindowSize);
+    delta: {
+      type: Number,
+      default: 0,
+    },
+    prevTimestamp: {
+      type: Number,
+      default: 0,
+    },
+    height: {
+      type: Number,
+      default: 0,
+    },
+    width: {
+      type: Number,
+      default: 0,
+    },
   },
   computed: {
     maxRow() {
       return Math.min(Math.ceil(this.width / 200), MAX_ROW);
-    },
-  },
-  methods: {
-    getWindowSize() {
-      this.height = window.innerHeight;
-      this.width = window.innerWidth;
-    },
-    tick(timestamp) {
-      this.delta = timestamp - this.prevTimestamp;
-      this.prevTimestamp = timestamp;
-      requestAnimationFrame(this.tick);
     },
   },
 };

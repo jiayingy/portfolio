@@ -1,6 +1,11 @@
 <template>
   <div class="portfolio-home">
-    <CandyController/>
+    <CandyController
+      :delta="delta"
+      :prevTimestamp="prevTimestamp"
+      :height="height"
+      :width="width"
+    />
   </div>
 </template>
 
@@ -10,6 +15,31 @@ import CandyController from './Home/CandyController';
 export default {
   components: {
     CandyController,
+  data() {
+    return {
+      delta: 0,
+      prevTimestamp: 0,
+      height: window.innerHeight,
+      width: window.innerWidth,
+    };
+  },
+  created() {
+    window.addEventListener('resize', this.getWindowSize);
+    this.tick(0);
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.getWindowSize);
+  },
+  methods: {
+    tick(timestamp) {
+      this.delta = timestamp - this.prevTimestamp;
+      this.prevTimestamp = timestamp;
+      requestAnimationFrame(this.tick);
+    },
+    getWindowSize() {
+      this.height = window.innerHeight;
+      this.width = window.innerWidth;
+    },
   },
 };
 </script>
