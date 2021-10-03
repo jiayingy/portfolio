@@ -46,7 +46,7 @@ export default {
     },
   },
   created() {
-    this.setSpeed();
+    this.setDelay();
   },
   methods: {
     getSpeed() {
@@ -68,11 +68,10 @@ export default {
       const candyNewDist = candyCurrDist + (this.speed * delta * 0.01);
       if (candyNewDist > this.totalDistance) {
         this.top = 0;
-        this.setSpeed();
-        // this.stop = true;
+        this.speed = 0;
+        this.setDelay();
       } else {
         this.top = candyNewDist;
-        // this.stop = fal/se;
       }
     },
   },
