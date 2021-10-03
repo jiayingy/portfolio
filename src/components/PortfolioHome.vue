@@ -6,15 +6,23 @@
       :height="height"
       :width="width"
     />
+    <CharacterController
+      :delta="delta"
+      :prevTimestamp="prevTimestamp"
+      :width="width"
+    />
   </div>
 </template>
 
 <script>
 import CandyController from './Home/CandyController';
+import CharacterController from './Home/CharacterController';
 
 export default {
   components: {
     CandyController,
+    CharacterController,
+  },
   data() {
     return {
       delta: 0,
@@ -48,5 +56,7 @@ export default {
 .portfolio-home {
   width: 100%;
   height: 100%;
+  overflow: hidden;
+  position: relative;
 }
 </style>
