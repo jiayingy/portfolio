@@ -1,6 +1,7 @@
 <template>
   <div
     class="character"
+    ref="character"
     :style="{
       transform: `translateX(${translation}px)`,
       width: `${charWidth}px`,
@@ -12,7 +13,7 @@
 </template>
 
 <script>
-const SPEED = 3;
+const SPEED = 12;
 
 export default {
   props: {
@@ -53,6 +54,15 @@ export default {
       if (this.translation > val) {
         this.translation = val;
       }
+    },
+    translation() {
+      const element = this.$refs.character;
+      const {
+        top, bottom, left, right,
+      } = element.getBoundingClientRect();
+      this.$emit('updateCharPos', {
+        top, bottom, left, right,
+      });
     },
   },
   methods: {

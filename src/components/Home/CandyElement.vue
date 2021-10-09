@@ -33,11 +33,16 @@ export default {
       type: Object,
       default: () => ({ delta: 0, prevTimestamp: 0 }),
     },
+    charPos: {
+      type: Object,
+      default: () => ({}),
+    },
   },
   data() {
     return {
       speed: 0,
       top: 0,
+      candyPos: {},
     };
   },
   watch: {

@@ -5,11 +5,13 @@
       :prevTimestamp="prevTimestamp"
       :height="height"
       :width="width"
+      :charPos="charPos"
     />
     <CharacterController
       :delta="delta"
       :prevTimestamp="prevTimestamp"
       :width="width"
+      @updateCharPos="updateCharPos"
     />
   </div>
 </template>
@@ -29,6 +31,7 @@ export default {
       prevTimestamp: 0,
       height: window.innerHeight,
       width: window.innerWidth,
+      charPos: {},
     };
   },
   created() {
@@ -47,6 +50,9 @@ export default {
     getWindowSize() {
       this.height = window.innerHeight;
       this.width = window.innerWidth;
+    },
+    updateCharPos(payload) {
+      this.charPos = payload;
     },
   },
 };

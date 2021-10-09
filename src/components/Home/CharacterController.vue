@@ -6,6 +6,7 @@
       :direction="direction"
       :charWidth="charWidth"
       :maxTranslation="maxTranslation"
+      @updateCharPos="updateCharPos"
     />
   </div>
 </template>
@@ -61,6 +62,9 @@ export default {
     },
     keyUpHandler() {
       this.moving = false;
+    },
+    updateCharPos(payload) {
+      this.$emit('updateCharPos', payload);
     },
   },
 };
