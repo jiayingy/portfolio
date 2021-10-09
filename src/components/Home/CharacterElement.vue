@@ -13,7 +13,7 @@
 </template>
 
 <script>
-const SPEED = 12;
+const SPEED = 0.5;
 
 export default {
   props: {
@@ -45,9 +45,9 @@ export default {
     };
   },
   watch: {
-    tick() {
+    tick({ delta }) {
       if (this.moving) {
-        this.getTranslation();
+        this.getTranslation(delta);
       }
     },
     maxTranslation(val) {
@@ -66,25 +66,25 @@ export default {
     },
   },
   methods: {
-    getTranslation() {
+    getTranslation(delta) {
       if (this.direction === 'left') {
-        this.moveLeft();
+        this.moveLeft(delta);
       } else {
-        this.moveRight();
+        this.moveRight(delta);
       }
     },
-    moveLeft() {
-      const newTranslation = this.translation - SPEED;
+    moveLeft(delta) {
+      const newTranslation = this.translation - SPEED * delta;
       const canMove = Math.abs(newTranslation) <= this.maxTranslation;
       if (canMove) {
-        this.translation -= SPEED;
+        this.translation = newTranslation;
       }
     },
-    moveRight() {
-      const newTranslation = this.translation + SPEED;
+    moveRight(delta) {
+      const newTranslation = this.translation + SPEED * delta;
       const canMove = Math.abs(newTranslation) <= this.maxTranslation;
       if (canMove) {
-        this.translation += SPEED;
+        this.translation = newTranslation;
       }
     },
   },
