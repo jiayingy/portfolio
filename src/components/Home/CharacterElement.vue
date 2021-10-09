@@ -3,10 +3,11 @@
     class="character"
     :style="{
       transform: `translateX(${translation}px)`,
-      width: `${charWidth}px`
+      width: `${charWidth}px`,
+      backgroundImage: `url(${require('@/assets/images/character/walking.svg')})`,
+      animationPlayState: moving ? 'running' : 'paused'
     }"
   >
-    <img src="@/assets/images/character/walk.png" alt="character">
   </div>
 </template>
 
@@ -81,12 +82,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@keyframes walking {
+  from {
+    background-position-x: 0px;
+  }
+  to {
+    background-position-x: -400px;
+  }
+}
+
 .character {
   text-align: center;
   margin: auto;
-
-  img {
-    width: 100%;
-  }
+  overflow: hidden;
+  animation: walking 0.8s steps(4) infinite;
+  width: 100px;
+  height: 140px;
+  background-size: cover;
 }
 </style>
