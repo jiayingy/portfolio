@@ -26,8 +26,8 @@ export default {
   },
   data() {
     return {
-      moving: false,
-      direction: '',
+      isLeftDown: false,
+      isRightDown: false,
       charWidth: CHARACTER_WIDTH,
     };
   },
@@ -49,19 +49,33 @@ export default {
     maxTranslation() {
       return ((this.width / 2) - (this.charWidth / 2));
     },
+    direction() {
+      let d = 0;
+      if (this.isLeftDown) d -= 1;
+      if (this.isRightDown) d += 1;
+
+      return d > 0 ? 'right' : 'left';
+    },
+    moving() {
+      return this.isLeftDown || this.isRightDown;
+    },
   },
   methods: {
     keyPressHandler(event) {
       if (event.keyCode === 37) {
-        this.moving = true;
-        this.direction = 'left';
+        this.isLeftDown = true;
+        this.isRightDown = false;
       } else if (event.keyCode === 39) {
-        this.moving = true;
-        this.direction = 'right';
+        this.isRightDown = true;
+        this.isLeftDown = false;
       }
     },
-    keyUpHandler() {
-      this.moving = false;
+    keyUpHandler(event) {
+      if (event.keyCode === 37) {
+        this.isLeftDown = false;
+      } else if (event.keyCode === 39) {
+        this.isRightDown = false;
+      }
     },
     updateCharPos(payload) {
       this.$emit('updateCharPos', payload);
