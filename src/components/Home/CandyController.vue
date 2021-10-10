@@ -6,6 +6,7 @@
         :index="i"
         :totalDistance="height"
         :tick="{ delta, prevTimestamp }"
+        :charPos="charPos"
       />
   </div>
 </template>
@@ -37,6 +38,10 @@ export default {
     width: {
       type: Number,
       default: 0,
+    },
+    charPos: {
+      type: Object,
+      default: () => ({}),
     },
   },
   computed: {

@@ -33,20 +33,55 @@ export default {
       type: Object,
       default: () => ({ delta: 0, prevTimestamp: 0 }),
     },
+    charPos: {
+      type: Object,
+      default: () => ({}),
+    },
   },
   data() {
     return {
       speed: 0,
       top: 0,
+      stop: false,
+      candyPos: {},
     };
   },
   watch: {
     tick({ delta }) {
       this.drop(delta);
     },
+    stop(val) {
+      if (val) {
+        this.top = 0;
+        this.speed = 0;
+        this.stop = false;
+        this.setDelay();
+      }
+    },
+    isHit(val) {
+      if (val) {
+        this.stop = true;
+      }
+    },
   },
   created() {
     this.setDelay();
+  },
+  computed: {
+    isHit() {
+      const candyPosBottom = this.candyPos.bottom;
+      const candyPosLeft = this.candyPos.left;
+      const candyPosRight = this.candyPos.right;
+
+      const charPosTop = this.charPos.top;
+      const charPosLeft = this.charPos.left;
+      const charPosRight = this.charPos.right;
+
+      return (candyPosLeft >= charPosLeft
+        && candyPosRight <= charPosRight
+        && candyPosBottom >= charPosTop
+      );
+    },
   },
   methods: {
     getSpeed() {
@@ -67,11 +102,23 @@ export default {
       const candyCurrDist = this.top;
       const candyNewDist = candyCurrDist + (this.speed * delta * 0.01);
       if (candyNewDist > this.totalDistance) {
-        this.top = 0;
-        this.speed = 0;
-        this.setDelay();
+        this.stop = true;
       } else {
         this.top = candyNewDist;
+      }
+      this.setCandyPos();
+    },
+    setCandyPos() {
+      const { candy } = this.$refs;
+      if (candy) {
+        const {
+          top, bottom, left, right,
+        } = candy.getBoundingClientRect();
+        this.candyPos = {
+          top, bottom, left, right,
+        };
+      } else {
+        this.candyPos = {};
       }
     },
   },
