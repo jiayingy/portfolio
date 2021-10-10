@@ -5,8 +5,8 @@
         :key="i"
         :index="i"
         :totalDistance="height"
-        :tick="{ delta, prevTimestamp }"
         :charPos="charPos"
+        ref="candies"
       />
   </div>
 </template>
@@ -20,14 +20,6 @@ export default {
   components: { CandyElement },
   props: {
     rows: {
-      type: Number,
-      default: 0,
-    },
-    delta: {
-      type: Number,
-      default: 0,
-    },
-    prevTimestamp: {
       type: Number,
       default: 0,
     },
@@ -47,6 +39,11 @@ export default {
   computed: {
     maxRow() {
       return Math.min(Math.ceil(this.width / 200), MAX_ROW);
+    },
+  },
+  methods: {
+    render(delta) {
+      this.$refs.candies.forEach((candy) => candy.render(delta));
     },
   },
 };

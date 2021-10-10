@@ -1,17 +1,15 @@
 <template>
   <div class="portfolio-home">
     <CandyController
-      :delta="delta"
-      :prevTimestamp="prevTimestamp"
       :height="height"
       :width="width"
       :charPos="charPos"
+      ref="candyController"
     />
     <CharacterController
-      :delta="delta"
-      :prevTimestamp="prevTimestamp"
       :width="width"
       @updateCharPos="updateCharPos"
+      ref="characterController"
     />
   </div>
 </template>
@@ -27,7 +25,6 @@ export default {
   },
   data() {
     return {
-      delta: 0,
       prevTimestamp: 0,
       height: window.innerHeight,
       width: window.innerWidth,
@@ -36,6 +33,8 @@ export default {
   },
   created() {
     window.addEventListener('resize', this.getWindowSize);
+  },
+  mounted() {
     this.tick(0);
   },
   beforeDestroy() {
@@ -43,8 +42,10 @@ export default {
   },
   methods: {
     tick(timestamp) {
-      this.delta = timestamp - this.prevTimestamp;
+      const delta = timestamp - this.prevTimestamp;
       this.prevTimestamp = timestamp;
+      this.$refs.characterController.render(delta);
+      this.$refs.candyController.render(delta);
       requestAnimationFrame(this.tick);
     },
     getWindowSize() {

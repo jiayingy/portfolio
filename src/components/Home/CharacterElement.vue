@@ -17,10 +17,6 @@ const SPEED = 0.5;
 
 export default {
   props: {
-    tick: {
-      type: Object,
-      default: () => ({ delta: 0, prevTimestamp: 0 }),
-    },
     moving: {
       type: Boolean,
       default: false,
@@ -45,11 +41,6 @@ export default {
     };
   },
   watch: {
-    tick({ delta }) {
-      if (this.moving) {
-        this.getTranslation(delta);
-      }
-    },
     maxTranslation(val) {
       if (this.translation > val) {
         this.translation = val;
@@ -71,6 +62,11 @@ export default {
         this.moveLeft(delta);
       } else {
         this.moveRight(delta);
+      }
+    },
+    render(delta) {
+      if (this.moving) {
+        this.getTranslation(delta);
       }
     },
     moveLeft(delta) {
