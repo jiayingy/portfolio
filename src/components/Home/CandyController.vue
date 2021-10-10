@@ -6,6 +6,7 @@
         :index="i"
         :totalDistance="height"
         :charPos="charPos"
+        @scorePoint="scorePoint"
         ref="candies"
       />
   </div>
@@ -42,6 +43,9 @@ export default {
     },
   },
   methods: {
+    scorePoint() {
+      this.$emit('scorePoint');
+    },
     render(delta) {
       this.$refs.candies.forEach((candy) => candy.render(delta));
     },

@@ -4,6 +4,7 @@
       :height="height"
       :width="width"
       :charPos="charPos"
+      @scorePoint="scorePoint"
       ref="candyController"
     />
     <CharacterController
@@ -29,6 +30,7 @@ export default {
       height: window.innerHeight,
       width: window.innerWidth,
       charPos: {},
+      totalPoints: 0,
     };
   },
   created() {
@@ -54,6 +56,9 @@ export default {
     },
     updateCharPos(payload) {
       this.charPos = payload;
+    },
+    scorePoint() {
+      this.totalPoints += 1;
     },
   },
 };
