@@ -10,11 +10,8 @@
 </template>
 
 <script>
-import stylesVariables from '@/assets/styles/exports.scss';
-
-const CANDY_SIZE = parseInt(stylesVariables.candySize, 10);
-const MAX_SPEED = CANDY_SIZE * 0.8;
-const MIN_SPEED = CANDY_SIZE * 0.1;
+const MAX_SPEED = 0.5;
+const MIN_SPEED = 0.1;
 
 const MAX_DELAY = 5000; // seconds
 const MIN_DELAY = 1000; // seconds
@@ -93,7 +90,7 @@ export default {
     },
     render(delta) {
       const candyCurrDist = this.top;
-      const candyNewDist = candyCurrDist + (this.speed * delta * 0.01);
+      const candyNewDist = candyCurrDist + (this.speed * delta);
       if (candyNewDist > this.totalDistance) {
         this.stop = true;
       } else {
