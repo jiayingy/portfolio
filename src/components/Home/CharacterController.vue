@@ -1,12 +1,12 @@
 <template>
   <div class="character-wrapper">
     <CharacterElement
-      :tick="{ delta, prevTimestamp }"
       :moving="moving"
       :direction="direction"
       :charWidth="charWidth"
       :maxTranslation="maxTranslation"
       @updateCharPos="updateCharPos"
+      ref="character"
     />
   </div>
 </template>
@@ -32,14 +32,6 @@ export default {
     };
   },
   props: {
-    delta: {
-      type: Number,
-      default: 0,
-    },
-    prevTimestamp: {
-      type: Number,
-      default: 0,
-    },
     width: {
       type: Number,
       default: 0,
@@ -79,6 +71,9 @@ export default {
     },
     updateCharPos(payload) {
       this.$emit('updateCharPos', payload);
+    },
+    render(delta) {
+      this.$refs.character.render(delta);
     },
   },
 };

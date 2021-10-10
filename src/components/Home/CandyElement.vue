@@ -29,10 +29,6 @@ export default {
       type: Number,
       default: 0,
     },
-    tick: {
-      type: Object,
-      default: () => ({ delta: 0, prevTimestamp: 0 }),
-    },
     charPos: {
       type: Object,
       default: () => ({}),
@@ -47,9 +43,6 @@ export default {
     };
   },
   watch: {
-    tick({ delta }) {
-      this.drop(delta);
-    },
     stop(val) {
       if (val) {
         this.top = 0;
@@ -98,7 +91,7 @@ export default {
         this.speed = this.getSpeed();
       }, this.getDelay());
     },
-    drop(delta) {
+    render(delta) {
       const candyCurrDist = this.top;
       const candyNewDist = candyCurrDist + (this.speed * delta * 0.01);
       if (candyNewDist > this.totalDistance) {
