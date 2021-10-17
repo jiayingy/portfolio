@@ -5,6 +5,11 @@
       ref="timer"
       @updateTimer="updateTimer"
     />
+    <PointSystem
+      :totalPoints="totalPoints"
+      :timer="timer"
+      ref="pointSystem"
+    />
     <CandyController
       :height="height"
       :width="width"
@@ -22,6 +27,7 @@
 </template>
 
 <script>
+import PointSystem from './Home/PointSystem';
 import CandyController from './Home/CandyController';
 import CharacterController from './Home/CharacterController';
 import GameTimer from './Home/GameTimer';
@@ -29,6 +35,7 @@ const TIMER = 30;
 
 export default {
   components: {
+    PointSystem,
     CandyController,
     CharacterController,
     GameTimer,
