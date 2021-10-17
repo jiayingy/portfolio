@@ -51,6 +51,11 @@ div {
   height: 100%;
   opacity: 0.2;
   font-family: 'Open Sans', 'Arial', sans-serif;
+  user-select: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
 }
 
 .total-points {
