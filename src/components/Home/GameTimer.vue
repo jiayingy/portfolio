@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="game-timer">
     00:{{ displayTimer }}
   </div>
 </template>
@@ -38,5 +38,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.game-timer {
+  font-size: 20px;
+}
 </style>

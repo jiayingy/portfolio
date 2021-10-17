@@ -14,6 +14,9 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+button {
+  font-size: 20px;
 
+}
 </style>
