@@ -5,6 +5,7 @@
       ref="timer"
       @updateTimer="updateTimer"
     />
+    <GameReset @reset="reset" />
     <PointSystem
       :totalPoints="totalPoints"
       :timer="timer"
@@ -31,6 +32,8 @@ import PointSystem from './Home/PointSystem';
 import CandyController from './Home/CandyController';
 import CharacterController from './Home/CharacterController';
 import GameTimer from './Home/GameTimer';
+import GameReset from './Home/GameReset';
+
 const TIMER = 30;
 
 export default {
@@ -39,6 +42,7 @@ export default {
     CandyController,
     CharacterController,
     GameTimer,
+    GameReset,
   },
   data() {
     return {
@@ -79,6 +83,12 @@ export default {
     },
     updateTimer(timer) {
       this.timer = timer;
+    },
+    reset() {
+      this.$refs.pointSystem.updateHighscore();
+      this.totalPoints = 0;
+      this.timer = TIMER;
+      this.$refs.timer.startTimer();
     },
   },
 };
