@@ -1,5 +1,10 @@
 <template>
   <div class="portfolio-home">
+    <GameTimer
+      :timer="timer"
+      ref="timer"
+      @updateTimer="updateTimer"
+    />
     <CandyController
       :height="height"
       :width="width"
@@ -18,11 +23,13 @@
 <script>
 import CandyController from './Home/CandyController';
 import CharacterController from './Home/CharacterController';
+import GameTimer from './Home/GameTimer';
 
 export default {
   components: {
     CandyController,
     CharacterController,
+    GameTimer,
   },
   data() {
     return {
@@ -31,6 +38,7 @@ export default {
       width: window.innerWidth,
       charPos: {},
       totalPoints: 0,
+      timer: TIMER,
     };
   },
   created() {
@@ -59,6 +67,9 @@ export default {
     },
     scorePoint() {
       this.totalPoints += 1;
+    },
+    updateTimer(timer) {
+      this.timer = timer;
     },
   },
 };
