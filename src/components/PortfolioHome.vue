@@ -11,6 +11,7 @@
       :charPos="charPos"
       @scorePoint="scorePoint"
       ref="candyController"
+      :timer="timer"
     />
     <CharacterController
       :width="width"
@@ -24,6 +25,7 @@
 import CandyController from './Home/CandyController';
 import CharacterController from './Home/CharacterController';
 import GameTimer from './Home/GameTimer';
+const TIMER = 30;
 
 export default {
   components: {
