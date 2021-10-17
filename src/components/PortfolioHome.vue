@@ -1,16 +1,21 @@
 <template>
   <div class="portfolio-home">
-    <GameTimer
-      :timer="timer"
-      ref="timer"
-      @updateTimer="updateTimer"
-    />
-    <GameReset @reset="reset" />
-    <PointSystem
-      :totalPoints="totalPoints"
-      :timer="timer"
-      ref="pointSystem"
-    />
+    <div class="portfolio-home-bg">
+      <GameTimer
+        :timer="timer"
+        ref="timer"
+        @updateTimer="updateTimer"
+        v-if="timer > 0"
+      />
+      <GameReset @reset="reset"
+        v-else
+      />
+      <PointSystem
+        :totalPoints="totalPoints"
+        :timer="timer"
+        ref="pointSystem"
+      />
+    </div>
     <CandyController
       :height="height"
       :width="width"
@@ -100,5 +105,17 @@ export default {
   height: 100%;
   overflow: hidden;
   position: relative;
+}
+
+.portfolio-home-bg {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #cccccc;
+  user-select: none;
+  text-transform: uppercase;
 }
 </style>
