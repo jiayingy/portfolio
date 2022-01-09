@@ -93,7 +93,6 @@ export default {
       this.$refs.pointSystem.updateHighscore();
       this.totalPoints = 0;
       this.timer = TIMER;
-      this.$refs.timer.startTimer();
     },
   },
 };
