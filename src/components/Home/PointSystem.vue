@@ -14,6 +14,10 @@ export default {
       type: Number,
       default: 0,
     },
+    timer: {
+      type: Number,
+      default: 0,
+    },
   },
   data() {
     return {
@@ -22,6 +26,13 @@ export default {
   },
   beforeDestroy() {
     this.updateHighscore();
+  },
+  watch: {
+    timer(val) {
+      if (val <= 0) {
+        this.updateHighscore();
+      }
+    },
   },
   methods: {
     updateHighscore() {
