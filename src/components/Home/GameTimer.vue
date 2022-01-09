@@ -26,7 +26,7 @@ export default {
   methods: {
     startTimer() {
       const timerInstance = setInterval(() => {
-        if (this.timer === 0) {
+        if (this.timer < 0) {
           clearInterval(timerInstance);
         } else {
           this.$emit('updateTimer', this.timer - 1);
