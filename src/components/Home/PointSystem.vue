@@ -42,9 +42,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-div {
-}
-
 .total-points {
   font-size: 120px;
   font-weight: bold;
