@@ -6,7 +6,7 @@
 </template>
 
 <script>
-const HIGHSCORE_KEY = 'game.highscore';
+const HIGHSCORE_KEY = 'jiayingPortfolio.highscore';
 
 export default {
   props: {
