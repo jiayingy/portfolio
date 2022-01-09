@@ -34,6 +34,9 @@ export default {
       }
     },
   },
+  created() {
+    window.addEventListener('beforeunload', this.updateHighscore);
+  },
   methods: {
     updateHighscore() {
       if (this.validateHighscore()) {
