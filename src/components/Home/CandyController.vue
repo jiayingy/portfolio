@@ -6,6 +6,7 @@
         :index="i"
         :totalDistance="height"
         :charPos="charPos"
+        @scorePoint="scorePoint"
         ref="candies"
       />
   </div>
@@ -35,6 +36,10 @@ export default {
       type: Object,
       default: () => ({}),
     },
+    timer: {
+      type: Number,
+      default: 0,
+    },
   },
   computed: {
     maxRow() {
@@ -42,8 +47,16 @@ export default {
     },
   },
   methods: {
+    scorePoint() {
+      this.$emit('scorePoint');
+    },
     render(delta) {
-      this.$refs.candies.forEach((candy) => candy.render(delta));
+      if (this.timer > 0) {
+        this.$refs.candies.forEach((candy) => candy.render(delta));
+      } else {
+        // eslint-disable-next-line no-param-reassign
+        this.$refs.candies.forEach((candy) => { candy.top = 0; });
+      }
     },
   },
 };
@@ -54,5 +67,8 @@ export default {
   display: flex;
   overflow: hidden;
   height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: -1;
 }
 </style>

@@ -6,11 +6,11 @@
 import stylesVariables from '@/assets/styles/exports.scss';
 
 export default {
-  data() { 
+  data() {
     return {
       displacement: 0,
       distance: document.documentElement.clientHeight - parseInt(stylesVariables.candySize, 10),
-    }
+    };
   },
   mounted() {
     this.getDisplacement();
@@ -21,18 +21,15 @@ export default {
       this.displacement = (Math.random() * 8 + 1);
     },
     dropCandy() {
-      const candy = this.$refs.candy;
+      const { candy } = this.$refs;
       // let timer = setInterval(() => {
-        const candyTop = parseInt(candy.style.top, 10);
-        const candyNewTop = candyTop + this.displacement;
-        if (candyNewTop > this.distance) {
-          // clearInterval(timer);
-        }
-        candy.style.top = `${candyNewTop}px`;
+      const candyTop = parseInt(candy.style.top, 10);
+      const candyNewTop = candyTop + this.displacement;
+      candy.style.top = `${candyNewTop}px`;
       // }, 20);
     },
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>

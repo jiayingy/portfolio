@@ -51,6 +51,7 @@ export default {
     isHit(val) {
       if (val) {
         this.stop = true;
+        this.scorePoint();
       }
     },
   },
@@ -110,6 +111,9 @@ export default {
       } else {
         this.candyPos = {};
       }
+    },
+    scorePoint() {
+      this.$emit('scorePoint');
     },
   },
 };
