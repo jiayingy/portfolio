@@ -73,10 +73,10 @@ export default {
     },
     touchStartHandler(event) {
       const touchPosX = event.touches[0].clientX;
-      const charPosX = this.$refs.character.$el.getBoundingClientRect().x;
+      const screenWidth = window.screen.width;
 
-      this.isLeftDown = touchPosX < charPosX;
-      this.isRightDown = touchPosX > charPosX;
+      this.isLeftDown = touchPosX < screenWidth / 2;
+      this.isRightDown = touchPosX > screenWidth / 2;
     },
     touchEndHandler() {
       this.isLeftDown = false;
