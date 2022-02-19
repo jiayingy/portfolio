@@ -23,6 +23,8 @@ export default {
   created() {
     window.addEventListener('keydown', this.keyPressHandler);
     window.addEventListener('keyup', this.keyUpHandler);
+    window.addEventListener('touchstart', this.touchStartHandler);
+    window.addEventListener('touchend', this.touchEndHandler);
   },
   data() {
     return {
@@ -68,6 +70,17 @@ export default {
       } else if (event.keyCode === 39) {
         this.isRightDown = false;
       }
+    },
+    touchStartHandler(event) {
+      const touchPosX = event.touches[0].clientX;
+      const charPosX = this.$refs.character.$el.getBoundingClientRect().x;
+
+      this.isLeftDown = touchPosX < charPosX;
+      this.isRightDown = touchPosX > charPosX;
+    },
+    touchEndHandler() {
+      this.isLeftDown = false;
+      this.isRightDown = false;
     },
     updateCharPos(payload) {
       this.$emit('updateCharPos', payload);
