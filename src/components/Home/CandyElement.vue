@@ -3,18 +3,31 @@
     <div
       v-if="top !== 0"
       class="candy" ref="candy"
-      :style="{ transform: `translate(0px, ${top}px)` }"
+      :style="{
+        transform: `translate(0px, ${top}px)`,
+        backgroundColor: backgroundColor
+      }"
     >
     </div>
   </div>
 </template>
 
 <script>
+import styleVariables from '@/assets/styles/exports.scss';
+
 const MAX_SPEED = 0.5;
 const MIN_SPEED = 0.1;
 
 const MAX_DELAY = 5000; // seconds
 const MIN_DELAY = 1000; // seconds
+
+const COLORS = [
+  styleVariables.colorBlue,
+  styleVariables.colorRed,
+  styleVariables.colorPurple,
+  styleVariables.colorOrange,
+  styleVariables.colorGreen,
+];
 
 export default {
   props: {
@@ -73,6 +86,9 @@ export default {
         && candyPosBottom >= charPosTop
       );
     },
+    backgroundColor() {
+      return COLORS[Math.abs(this.index % COLORS.length)];
+    },
   },
   methods: {
     getSpeed() {
@@ -128,7 +144,6 @@ export default {
   width: $candy-size;
   height: $candy-size;
   border-radius: 50%;
-  background-color: purple;
   top: 0;
   margin: auto;
 }
