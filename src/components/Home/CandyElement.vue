@@ -81,6 +81,10 @@ export default {
       const charPosLeft = this.charPos.left;
       const charPosRight = this.charPos.right;
 
+      if (this.top === 0) {
+        return false;
+      }
+
       return (candyPosLeft >= charPosLeft
         && candyPosRight <= charPosRight
         && candyPosBottom >= charPosTop
