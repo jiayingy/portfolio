@@ -104,6 +104,10 @@ export default {
   height: 100%;
   overflow: hidden;
   position: relative;
+
+  * {
+    user-select: none;
+  }
 }
 
 .portfolio-home-bg {
