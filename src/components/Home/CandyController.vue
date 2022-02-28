@@ -36,7 +36,7 @@ export default {
       type: Object,
       default: () => ({}),
     },
-    timer: {
+    gameTimer: {
       type: Number,
       default: 0,
     },
@@ -51,7 +51,7 @@ export default {
       this.$emit('scorePoint');
     },
     render(delta) {
-      if (this.timer > 0) {
+      if (this.gameTimer > 0) {
         this.$refs.candies.forEach((candy) => candy.render(delta));
       } else {
         // eslint-disable-next-line no-param-reassign

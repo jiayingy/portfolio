@@ -14,7 +14,7 @@ export default {
       type: Number,
       default: 0,
     },
-    timer: {
+    gameTimer: {
       type: Number,
       default: 0,
     },
@@ -28,7 +28,7 @@ export default {
     this.updateHighscore();
   },
   watch: {
-    timer(val) {
+    gameTimer(val) {
       if (val <= 0) {
         this.updateHighscore();
       }
