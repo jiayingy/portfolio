@@ -1,28 +1,19 @@
 <template>
   <div class="portfolio-home">
-    <div class="portfolio-home-bg">
-      <GameTimer
-        :timer="timer"
-        ref="timer"
-        @updateTimer="updateTimer"
-        v-if="timer > 0"
-      />
-      <GameReset @reset="reset"
-        v-else
-      />
-      <PointSystem
-        :totalPoints="totalPoints"
-        :timer="timer"
-        ref="pointSystem"
-      />
-    </div>
+    <HomeBackground
+      :totalPoints="totalPoints"
+      :gameTimer="gameTimer"
+      :introTimer="introTimer"
+      @updateGameTimer="updateGameTimer"
+      @reset="reset"
+    />
     <CandyController
       :height="height"
       :width="width"
       :charPos="charPos"
       @scorePoint="scorePoint"
       ref="candyController"
-      :timer="timer"
+      :gameTimer="gameTimer"
     />
     <CharacterController
       :width="width"
@@ -33,21 +24,18 @@
 </template>
 
 <script>
-import PointSystem from './Home/PointSystem';
+import HomeBackground from './Home/HomeBackground';
 import CandyController from './Home/CandyController';
 import CharacterController from './Home/CharacterController';
-import GameTimer from './Home/GameTimer';
-import GameReset from './Home/GameReset';
 
-const TIMER = 30;
+const GAME_TIMER = 30;
+const INTRO_TIMER = 5;
 
 export default {
   components: {
-    PointSystem,
+    HomeBackground,
     CandyController,
     CharacterController,
-    GameTimer,
-    GameReset,
   },
   data() {
     return {
@@ -56,17 +44,24 @@ export default {
       width: window.innerWidth,
       charPos: {},
       totalPoints: 0,
-      timer: TIMER,
+      gameTimer: GAME_TIMER,
+      introTimer: INTRO_TIMER,
     };
   },
   created() {
     window.addEventListener('resize', this.getWindowSize);
+    this.startIntroCountdown();
   },
   mounted() {
     this.tick(0);
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.getWindowSize);
+  },
+  computed: {
+    hasStarted() {
+      return this.introTimer < 0 && this.gameTimer >= 0;
+    },
   },
   methods: {
     tick(timestamp) {
@@ -76,6 +71,15 @@ export default {
       this.$refs.candyController.render(delta);
       requestAnimationFrame(this.tick);
     },
+    startIntroCountdown() {
+      const intervalId = setInterval(() => {
+        this.introTimer -= 1;
+
+        if (this.introTimer < 0) {
+          clearInterval(intervalId);
+        }
+      }, 1000);
+    },
     getWindowSize() {
       this.height = window.innerHeight;
       this.width = window.innerWidth;
@@ -84,15 +88,16 @@ export default {
       this.charPos = payload;
     },
     scorePoint() {
-      this.totalPoints += 1;
+      if (this.hasStarted) {
+        this.totalPoints += 1;
+      }
     },
-    updateTimer(timer) {
-      this.timer = timer;
+    updateGameTimer(timer) {
+      this.gameTimer = timer;
     },
     reset() {
-      this.$refs.pointSystem.updateHighscore();
       this.totalPoints = 0;
-      this.timer = TIMER;
+      this.gameTimer = GAME_TIMER;
     },
   },
 };
@@ -104,17 +109,5 @@ export default {
   height: 100%;
   overflow: hidden;
   position: relative;
-}
-
-.portfolio-home-bg {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  color: #cccccc;
-  user-select: none;
-  text-transform: uppercase;
 }
 </style>
