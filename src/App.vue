@@ -1,13 +1,18 @@
 <template>
-  <div id="app"><PortfolioHome/></div>
+  <div id="app">
+    <div class="navbar-wrapper">
+      <Navbar/>
+    </div>
+    <router-view/>
+  </div>
 </template>
 
 <script>
-import PortfolioHome from './components/PortfolioHome';
+import Navbar from './components/Navbar';
 
 export default {
   components: {
-    PortfolioHome,
+    Navbar,
   },
 };
 </script>
@@ -16,5 +21,8 @@ export default {
 #app {
   height: 100vh;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
+
 </style>
