@@ -28,7 +28,7 @@ button {
   align-items: center;
   cursor: pointer;
   color: inherit;
-  transition: 0.5s color;
+  transition: 0.2s color;
 
   &:hover {
     color: #9d7dcf;
