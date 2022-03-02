@@ -7,7 +7,7 @@
 <script>
 export default {
   props: {
-    timer: {
+    gameTimer: {
       type: Number,
       default: 0,
     },
@@ -17,19 +17,19 @@ export default {
   },
   computed: {
     displayTimer() {
-      if (this.timer < 10) {
-        return `0${this.timer}`;
+      if (this.gameTimer < 10) {
+        return `0${this.gameTimer}`;
       }
-      return this.timer;
+      return this.gameTimer;
     },
   },
   methods: {
     startTimer() {
       const timerInstance = setInterval(() => {
-        if (this.timer < 0) {
+        if (this.gameTimer < 0) {
           clearInterval(timerInstance);
         } else {
-          this.$emit('updateTimer', this.timer - 1);
+          this.$emit('updateGameTimer', this.gameTimer - 1);
         }
       }, 1000);
     },
