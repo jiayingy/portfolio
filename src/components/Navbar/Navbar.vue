@@ -43,10 +43,8 @@ export default {
   data() {
     return {
       links: [
-        { key: NAVBAR_KEY_1, value: 'home' },
-        { key: NAVBAR_KEY_2, value: 'projects' },
-        { key: NAVBAR_KEY_3, value: 'art' },
-        { key: NAVBAR_KEY_4, value: 'contact' },
+        { key: NAVBAR_KEY_1, value: 'github' },
+        { key: NAVBAR_KEY_2, value: 'resume' },
       ],
     };
   },
@@ -76,7 +74,7 @@ export default {
   top: 0;
   height: 60px;
   background-color: white;
-  box-shadow: 0 2px 6px 0 rgba(0,0,0,.2);
+  // box-shadow: 0 2px 6px 0 rgba(0,0,0,.2);
 }
 
 .mobile,
