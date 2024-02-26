@@ -4,12 +4,11 @@
       <li
         v-for="link in links"
         :key="link.key"
-        :class="{ active: link.key === currRoute }"
-        :style="getBgColor(link.key)"
+        :style="{'--backgroundColor': link.color}"
+        @mouseover="setActive($event)"
+        @mouseout="clearActive($event)"
       >
-        <router-link :to="{ name: link.key }">
-          {{ link.value }}
-        </router-link>
+        <a v-bind:href="link.href" target="_blank">{{ link.value }}</a>
       </li>
     </ul>
     <div class="mobile">
@@ -24,17 +23,8 @@
 import styleVariables from '@/assets/styles/exports.scss';
 import HamburgerNav from './HamburgerNav';
 
-const NAVBAR_KEY_1 = 'home';
-const NAVBAR_KEY_2 = 'projects';
-const NAVBAR_KEY_3 = 'art';
-const NAVBAR_KEY_4 = 'contact';
-
-const COLORS = {
-  [NAVBAR_KEY_1]: styleVariables.colorPurple,
-  [NAVBAR_KEY_2]: styleVariables.colorRed,
-  [NAVBAR_KEY_3]: styleVariables.colorGreen,
-  [NAVBAR_KEY_4]: styleVariables.colorBlue,
-};
+const NAVBAR_KEY_1 = 'github';
+const NAVBAR_KEY_2 = 'resume';
 
 export default {
   components: {
@@ -43,26 +33,27 @@ export default {
   data() {
     return {
       links: [
-        { key: NAVBAR_KEY_1, value: 'github' },
-        { key: NAVBAR_KEY_2, value: 'resume' },
+        {
+          key: NAVBAR_KEY_1, value: 'github', href: 'https://github.com/jiayingy', color: styleVariables.colorPurple,
+        },
+        {
+          key: NAVBAR_KEY_2, value: 'resume', href: 'https://www.jiayingy.space/assets/files/LekJiaYing-resume.pdf', color: styleVariables.colorOrange,
+        },
       ],
     };
   },
-  computed: {
-    currRoute() {
-      return this.$route.name;
-    },
-  },
   methods: {
-    getBgColor(linkKey) {
-      const isActive = this.currRoute === linkKey;
-
-      if (isActive) {
-        return {
-          '--backgroundColor': COLORS[linkKey],
-        };
+    setActive(event) {
+      const el = event.target.parentNode;
+      if (!el.classList.contains('active')) {
+        el.classList.add('active');
       }
-      return null;
+    },
+    clearActive(event) {
+      const el = event.target.parentNode;
+      if (el.classList.contains('active')) {
+        el.classList.remove('active');
+      }
     },
   },
 };
@@ -70,10 +61,11 @@ export default {
 
 <style lang="scss" scoped>
 .navbar {
-  position: sticky;
+  position: absolute;
   top: 0;
-  height: 60px;
-  background-color: white;
+  height: 200px;
+  width: 100%;
+  z-index: 999;
   // box-shadow: 0 2px 6px 0 rgba(0,0,0,.2);
 }
 
@@ -94,7 +86,7 @@ ul {
     list-style: none;
     position: relative;
     font-weight: normal;
-    transition: font-weight 0.2s;
+    transition: font-size 0.2s;
 
     &::after {
       width: 0;
@@ -109,6 +101,7 @@ ul {
 
     &.active {
       font-weight: bold;
+      font-size: 20px;
       color: var(--backgroundColor);
 
       &::after {
@@ -133,6 +126,6 @@ ul {
   align-items: center;
   padding: 10px;
   box-sizing: border-box;
-  justify-content: flex-end;
+  justify-content: center;
 }
 </style>
